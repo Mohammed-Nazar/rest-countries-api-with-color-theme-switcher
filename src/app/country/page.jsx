@@ -8,7 +8,7 @@ import MyContext from "../context/appContext";
 import { useContext } from "react";
 
 const Country = ({ searchParams }) => {
-  let darkTheme = searchParams.darkTheme;
+  let darkTheme = true;
   let theme = darkTheme ? "bg-[#333E48] text-[#fafafa]" : "bg-white";
 
   const [arr, setArr] = useState([]);
@@ -30,6 +30,7 @@ const Country = ({ searchParams }) => {
             <Link
               href={{
                 pathname: "/",
+
               }}
             >
               <button
