@@ -96,9 +96,9 @@ const MainC = () => {
       <div className="bg-[#2b3945] px-6 flex mx-10 ml-0 my-10 mb-6 w-[90%] rounded-lg lg:w-[20%]">
         <FontAwesomeIcon className="w-4 mt-5 text-gray-300" icon={faSearch} />
         <input
-        
+        placeholder="Country Name"
         onChange={(i)=>seacrhCountry(i, arrOfData)}
-          className="px-3 p rounded-md outline-none text-s py-4 bg-[#2b3945]"
+          className="px-3 p rounded-md outline-none text-s py-4 bg-[#2b3945] text-[#fafafa]"
           type="text"
         />
     </div>
