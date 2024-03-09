@@ -733,9 +733,6 @@ video {
 .p-1 {
   padding: 0.25rem;
 }
-.p-10 {
-  padding: 2.5rem;
-}
 .p-2 {
   padding: 0.5rem;
 }
@@ -744,15 +741,6 @@ video {
 }
 .p-6 {
   padding: 1.5rem;
-}
-.p-5 {
-  padding: 1.25rem;
-}
-.p-8 {
-  padding: 2rem;
-}
-.p-7 {
-  padding: 1.75rem;
 }
 .px-10 {
   padding-left: 2.5rem;

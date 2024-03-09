@@ -58,7 +58,7 @@ const MainC = () => {
                 <h1 className="font-bold  text-3xl my-4">{i.name.common}</h1>
                 <h4 className="font-semibold">
                   Population:{" "}
-                  <span className="font-extralight">{i.population}</span>
+                  <span className="font-extralight">{i.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 </h4>
                 <h4 className="font-semibold">
                   Region: <span className="font-extralight">{i.region}</span>

@@ -59,7 +59,7 @@ const Country = ({ searchParams }) => {
                 </h6>
                 <h6 className="font-semibold mt-2">
                   Population:
-                  <span className="font-light"> {i.population}</span>
+                  <span className="font-light"> {i.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 </h6>
                 <h6 className="font-semibold mt-2">
                   Region:
