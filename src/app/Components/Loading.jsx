@@ -3,10 +3,10 @@ import { useContext, useEffect } from "react"
 import { MyContext } from "../context/appContext";
 
 const Loading = () => {
-  const darkTheme = useContext(MyContext)
-  let theme = darkTheme.darkTheme? "bg-[#333E48] text-white" : "bg-white";
+  const {darkTheme,} = useContext(MyContext)
+  let theme = darkTheme? "bg-[#333E48] text-white" : "bg-white";
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className={`${theme} h-screen flex justify-center items-center`}>
       <div role="status">
         <svg
           aria-hidden="true"

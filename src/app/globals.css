@@ -7,4 +7,5 @@
 *{
     font-family: "Nunito Sans", sans-serif;
     animation: ease-in;
+    transition: all ease-in 0.020s;
 }
