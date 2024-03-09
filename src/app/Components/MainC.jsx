@@ -9,24 +9,30 @@ import { useContext } from "react";
 
 const MainC = () => {
   const {darkTheme, changeTheme} = useContext(MyContext)
-
+ 
   let theme = darkTheme? "bg-[#2b3945] text-white" : "bg-white";
 
   const [arr, setArr] = useState([]);
   const [arrOfData, setArrOfData] = useState([])
-  const [Load, setLoad] = useState(false)
+
+
+  const [Load, setLoad] = useState(true)
+
+
   useEffect(()=>{
     getCountries();
     
   }, []);
+  
   useEffect(() => {
     showCountries(arrOfData);
-  }, [arrOfData]);
+  }, [arrOfData,darkTheme]);
+  
   async function getCountries() {
     const res = await fetch("https://restcountries.com/v3.1/all");
     const data = await res.json();
     setArrOfData(data);
-    setLoad(true)
+    setLoad(false)
 
   }
 
@@ -39,19 +45,15 @@ const MainC = () => {
           <Link
             key={i.name.common}
             href={{
-              pathname: `/country`,
-              query: {
-                name: i.name.common,
-                darkTheme: darkTheme,
-              },
+              pathname: `/country/${i.name.common}`,
             }}
           >
             <div
             
-              className={`${theme} rounded-md shadow-sm hover:cursor-pointer lg:h-[28rem]`}
+              className={`${theme} rounded-md shadow-sm hover:cursor-pointer h-full `}
               key={i.name.common}
             >
-              <img className="lg:object-contain lg:h-[200px] " src={i.flags.svg} />
+              <img className="md:w-full md:h-48 md:object-cover " src={i.flags.svg} />
               <div className="px-5 py-5 pb-12">
                 <h1 className="font-bold  text-3xl my-4">{i.name.common}</h1>
                 <h4 className="font-semibold">
@@ -90,20 +92,20 @@ const MainC = () => {
 
 
   return (
-    Load? 
-    <div className={`${darkTheme ? "bg-[#333E48]": "bg-[#fafafa]"} flex flex-col justify-center items-center`}>
-    <div className="flex flex-col lg:flex-row lg:justify-between lg:w-[100%] lg:px-10">
-      <div className="bg-[#2b3945] px-6 flex mx-10 ml-0 my-10 mb-6 w-[90%] rounded-lg lg:w-[20%]">
+    Load? <Loading/>:
+    <div className={`${darkTheme ? "bg-[#202c37] text-[#fafafa]": "bg-[#fafafa]"} flex flex-col justify-center items-center h-full`}>
+    <div className="flex flex-col md:flex-row md:justify-between md:w-[100%] md:px-14">
+      <div className={`${theme} px-6 flex mx-10 ml-0 my-10 mb-6 w-[90%] rounded-md md:w-[20%]`}>
         <FontAwesomeIcon className="w-4 mt-5 text-gray-300" icon={faSearch} />
         <input
         placeholder="Country Name"
         onChange={(i)=>seacrhCountry(i, arrOfData)}
-          className="px-3 p rounded-md outline-none text-s py-4 bg-[#2b3945] text-[#fafafa]"
+          className={`${theme} px-3 p rounded-md outline-none text-s py-4`}
           type="text"
         />
     </div>
-    <div className='filter bg-white rounded-lg self-start font-extralight mx-4 ml-0 p-2 lg:self-center'>
-        <select onChange={(i)=>filterFunc(i, arrOfData)} className="pr-5 text-lg rounded-xl outline-none">
+    <div className={`${theme} filter rounded-md self-start font-extralight mx-4 ml-0 p-4 md:self-center mt-4`}>
+        <select onChange={(i)=>filterFunc(i, arrOfData)} className={`${theme} pr-5 text-md rounded-xl outline-none`}>
         <option value='all'>Filter by region</option>
             <option value='africa'>Africa</option>
             <option value='americas'>Americas</option>
@@ -113,9 +115,9 @@ const MainC = () => {
         </select>
     </div>
     </div>
-      <div className="grid grid-cols-1 gap-12 m-5 my-10 lg:grid-cols-4">{arr}</div>
+      <div className="grid grid-cols-1 gap-12 m-5 my-10 md:grid-cols-4 p-10 h-full">{arr}</div>
     </div>
-  : <Loading/>
+  
   );
 };
 
